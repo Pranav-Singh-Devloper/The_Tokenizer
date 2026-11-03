@@ -120,7 +120,7 @@ export async function initExperiments(el) {
   const z = d.zipf;
   el.append(h("div.card", {}, h("h3", {}, "E5 · Token frequency vs. rank (Zipf)"),
     lineChartZ(z),
-    h("p.small.muted", {}, "Word frequencies fall off as a long power-law tail (many words seen once or twice). BPE's merge procedure flattens the head and thins the tail: the rare-token problem is far less severe.")));
+    h("p.small.muted", {}, "Both are roughly Zipfian, but the word vocabulary has a long tail of items seen ≤5 times (top 3,000 ranks plotted), while nearly every byte-BPE token that occurs is seen at least ~30 times — far fewer poorly-trained embeddings.")));
 }
 
 function lineChartZ(z) {
