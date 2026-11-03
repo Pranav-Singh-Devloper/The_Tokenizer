@@ -259,14 +259,15 @@ class EncodeUnseen(Scene):
                 mid = (chips[i].get_right() + chips[i + 1].get_left()) / 2
                 rl.add(label("–" if rk is None else f"#{rk + 1}", 22, MUTED if rk is None else ACCENT, BOLD, MONO).move_to(mid + DOWN * 0.8))
             self.play(FadeIn(rl, shift=UP * 0.1), run_time=0.5)
-            if n == 0: tl.mark("Each neighbouring pair is looked up in the merge table; “–” means no rule.")
+            tl.mark("Look up every neighbouring pair in the merge table; “–” means no rule exists." if n == 0 else "Look up the neighbouring pairs again.")
             best = cur["rank"]
             bi = ranks.index(best)
             row = rows[best]
             hl = SurroundingRectangle(VGroup(chips[bi], chips[bi + 1]), color=WARN, buff=0.07, stroke_width=3, corner_radius=0.1)
             rowbox = SurroundingRectangle(row, color=WIN, buff=0.06, stroke_width=2, corner_radius=0.06)
             self.play(Create(hl), Create(rowbox), rl[bi].animate.set_color(WIN), row.animate.set_color(WIN), run_time=0.6)
-            if n == 0: tl.mark("The lowest rank wins: rule #1 turns e + s into “es”.")
+            a_, b_ = cur["pair"]
+            tl.mark(f"Lowest rank wins: rule #{best + 1} turns {vis(a_)} + {vis(b_)} into “{vis(a_ + b_)}”." + (" Merge it everywhere." if n == 0 else ""))
             self.wait(0.5)
             target = layout(cur["symbols"])
             anims, newchips, i, j = [], [], 0, 0

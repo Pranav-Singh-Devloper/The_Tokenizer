@@ -11,11 +11,35 @@
   },
   {
    "t": 5.8,
-   "text": "Each neighbouring pair is looked up in the merge table; “–” means no rule."
+   "text": "Look up every neighbouring pair in the merge table; “–” means no rule exists."
   },
   {
    "t": 6.4,
-   "text": "The lowest rank wins: rule #1 turns e + s into “es”."
+   "text": "Lowest rank wins: rule #1 turns e + s into “es”. Merge it everywhere."
+  },
+  {
+   "t": 8.6,
+   "text": "Look up the neighbouring pairs again."
+  },
+  {
+   "t": 9.2,
+   "text": "Lowest rank wins: rule #2 turns es + t</w> into “est</w>”."
+  },
+  {
+   "t": 11.4,
+   "text": "Look up the neighbouring pairs again."
+  },
+  {
+   "t": 12.0,
+   "text": "Lowest rank wins: rule #3 turns l + o into “lo”."
+  },
+  {
+   "t": 14.2,
+   "text": "Look up the neighbouring pairs again."
+  },
+  {
+   "t": 14.8,
+   "text": "Lowest rank wins: rule #12 turns lo + w into “low”."
   },
   {
    "t": 16.5,
