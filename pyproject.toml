@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tokenlab"
+version = "0.1.0"
+description = "Word-level and sub-word (BPE, byte-level BPE, WordPiece) tokenizers implemented from scratch, with an interactive web visualizer."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Pranav Singh" }]
+dependencies = []   # the core library is standard-library only, on purpose
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+experiments = ["matplotlib>=3.8"]
+validate = ["tiktoken>=0.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
