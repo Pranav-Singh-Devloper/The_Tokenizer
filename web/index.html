@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Tokenizer</title>
+  <meta name="description" content="Interactive, step-by-step visualisation of word-level, BPE, byte-level BPE and WordPiece tokenizers - implemented from scratch.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f46e5'/%3E%3Crect x='4' y='11' width='7' height='10' rx='2' fill='white'/%3E%3Crect x='13' y='11' width='6' height='10' rx='2' fill='white' opacity='.7'/%3E%3Crect x='21' y='11' width='7' height='10' rx='2' fill='white' opacity='.45'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="#learn"><span class="logo" aria-hidden="true"><i></i><i></i><i></i></span> The Tokenizer</a>
+      <nav id="nav" aria-label="Sections">
+        <a href="#learn" data-tab="learn">Learn</a>
+        <a href="#playground" data-tab="playground">Playground</a>
+        <a href="#train" data-tab="train">Training lab</a>
+        <a href="#encode" data-tab="encode">Encoding lab</a>
+        <a href="#experiments" data-tab="experiments">Experiments</a>
+      </nav>
+      <button id="theme" class="icon-btn" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="learn" class="tab" hidden></section>
+    <section id="playground" class="tab" hidden></section>
+    <section id="train" class="tab" hidden></section>
+    <section id="encode" class="tab" hidden></section>
+    <section id="experiments" class="tab" hidden></section>
+  </main>
+
+  <footer class="wrap foot">
+    Word-level and sub-word tokenizers implemented from scratch by Pranav Singh ·
+    algorithms run live in your browser (a tested port of the Python library) ·
+    <a href="https://github.com/Pranav-Singh-Devloper/The_Tokenizer">source &amp; report</a>
+  </footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
