@@ -1,0 +1,25 @@
+{
+ "duration": 21.3,
+ "captions": [
+  {
+   "t": 1.0,
+   "text": "The tokenizer never saw “lowest” in training. Can it still encode it?"
+  },
+  {
+   "t": 4.5,
+   "text": "Start from single characters, then repeatedly apply the EARLIEST-learned merge that fits."
+  },
+  {
+   "t": 5.8,
+   "text": "Each neighbouring pair is looked up in the merge table; “–” means no rule."
+  },
+  {
+   "t": 6.4,
+   "text": "The lowest rank wins: rule #1 turns e + s into “es”."
+  },
+  {
+   "t": 16.5,
+   "text": "No rule applies any more: “lowest” = low + est</w>. Both pieces are in the vocabulary, so we get ids."
+  }
+ ]
+}

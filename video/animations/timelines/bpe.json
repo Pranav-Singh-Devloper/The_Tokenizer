@@ -1,0 +1,29 @@
+{
+ "duration": 35.2,
+ "captions": [
+  {
+   "t": 1.0,
+   "text": "Start with a tiny corpus. Every word is split into characters."
+  },
+  {
+   "t": 4.367,
+   "text": "Phase 1 · COUNT every adjacent pair, weighted by how often its word occurs."
+  },
+  {
+   "t": 6.467,
+   "text": "Phase 2 · CHOOSE the most frequent pair: (e, s) occurs 9 times."
+  },
+  {
+   "t": 8.467,
+   "text": "Phase 3 · MERGE: replace every (e, s) by the single new symbol “es”."
+  },
+  {
+   "t": 17.333,
+   "text": "Repeat. Each merge adds one symbol to the vocabulary and shortens the corpus."
+  },
+  {
+   "t": 30.4,
+   "text": "After 6 merges the whole word “newest” is a single token."
+  }
+ ]
+}

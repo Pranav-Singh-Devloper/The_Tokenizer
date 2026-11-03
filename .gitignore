@@ -9,3 +9,5 @@ node_modules/
 data/raw/
 results/tmp/
 .vercel
+video/animations/media/
+video/remotion/out/
