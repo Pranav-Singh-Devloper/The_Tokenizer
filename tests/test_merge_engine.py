@@ -51,3 +51,10 @@ def test_likelihood_prefers_rare_parts_over_frequent_pair():
     eng = MergeEngine(words)
     assert eng.best_by_frequency() == ("e", "s")
     assert eng.best_by_likelihood() == ("q", "u")
+
+
+def test_gain_weights_by_frequency():
+    # same ratio as ("q","u") but 100x more frequent -> must win under 'gain'
+    words = {("q", "u"): 1, ("z", "k"): 100, ("e", "s"): 50, ("e", "x"): 50, ("s", "x"): 50}
+    eng = MergeEngine(words)
+    assert eng.best_by_gain() == ("z", "k")

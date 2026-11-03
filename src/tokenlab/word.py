@@ -48,11 +48,11 @@ class WordTokenizer(Tokenizer):
 
     # ---- inference ----------------------------------------------------
     def tokenize(self, text: str) -> list[str]:
-        return split_basic(text, self.lowercase)
+        """Words, with out-of-vocabulary words replaced by ``<unk>``."""
+        return [w if w in self.vocab else UNK for w in split_basic(text, self.lowercase)]
 
     def encode(self, text: str) -> list[int]:
-        unk = self.vocab[UNK]
-        return [self.vocab.get(w, unk) for w in self.tokenize(text)]
+        return [self.vocab[t] for t in self.tokenize(text)]
 
     def decode(self, ids: list[int]) -> str:
         # lossy: whitespace and casing were discarded at pre-tokenization

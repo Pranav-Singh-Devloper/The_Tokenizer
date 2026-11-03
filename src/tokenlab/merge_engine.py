@@ -73,6 +73,28 @@ class MergeEngine:
                 best, best_num, best_den = pair, c, den
         return best
 
+    def best_by_gain(self) -> Pair | None:
+        """Frequency-weighted likelihood gain: ``c * ln(c * N / (c_a * c_b))``.
+
+        This is the first-order change in corpus log-likelihood under a unigram
+        model when ``a b`` is replaced by one symbol (N = total symbol count).
+        Unlike the bare ratio of :meth:`best_by_likelihood` it multiplies by
+        ``c``, so a merge must be both *informative* and *frequent*. Uses
+        floats, so it is only available in the Python implementation.
+        """
+        import math
+
+        if not self.pair_counts:
+            return None
+        n = sum(self.symbol_counts.values())
+        best: Pair | None = None
+        best_g = -math.inf
+        for pair, c in self.pair_counts.items():
+            g = c * math.log(c * n / (self.symbol_counts[pair[0]] * self.symbol_counts[pair[1]]))
+            if g > best_g or (g == best_g and best is not None and pair < best):
+                best, best_g = pair, g
+        return best
+
     # ---- step 2: apply -------------------------------------------------
     def merge(self, pair: Pair, new_symbol: str) -> int:
         """Apply ``pair -> new_symbol`` everywhere. Returns #words changed."""

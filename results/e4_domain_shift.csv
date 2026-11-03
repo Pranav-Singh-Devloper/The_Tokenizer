@@ -1,0 +1,16 @@
+domain,tokenizer,bytes_per_token,unk_rate
+Shakespeare (in-domain test),"word (V=2000, Shakespeare-trained)",4.155,0.0
+Shakespeare (in-domain test),"char-BPE (V=2000, Shakespeare-trained)",2.864,0.0
+Shakespeare (in-domain test),"byte-BPE (V=2000, Shakespeare-trained)",2.55,0.0
+Shakespeare (in-domain test),"WordPiece (V=2000, Shakespeare-trained)",1.482,0.0
+Shakespeare (in-domain test),"GPT-2 byte-BPE (V=50257, WebText-trained)",3.093,0.0
+Modern prose,"word (V=2000, Shakespeare-trained)",5.429,0.0
+Modern prose,"char-BPE (V=2000, Shakespeare-trained)",2.533,0.0
+Modern prose,"byte-BPE (V=2000, Shakespeare-trained)",2.472,0.0
+Modern prose,"WordPiece (V=2000, Shakespeare-trained)",1.401,0.0046
+Modern prose,"GPT-2 byte-BPE (V=50257, WebText-trained)",5.067,0.0
+Python code,"word (V=2000, Shakespeare-trained)",3.014,0.0
+Python code,"char-BPE (V=2000, Shakespeare-trained)",2.038,0.019
+Python code,"byte-BPE (V=2000, Shakespeare-trained)",1.456,0.0
+Python code,"WordPiece (V=2000, Shakespeare-trained)",1.497,0.1958
+Python code,"GPT-2 byte-BPE (V=50257, WebText-trained)",2.206,0.0

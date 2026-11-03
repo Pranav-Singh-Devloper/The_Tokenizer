@@ -75,7 +75,13 @@ class WordPieceTokenizer(Tokenizer):
         vocab_size: int,
         lowercase: bool = True,
         on_merge: Callable[[WPStep], None] | None = None,
+        score: str = "ratio",
     ) -> "WordPieceTokenizer":
+        """``score="ratio"``: count(ab)/(count(a)count(b)) - the textbook rule.
+        ``score="gain"``: frequency-weighted likelihood gain (see
+        :meth:`MergeEngine.best_by_gain`) - an ablation, see the report."""
+        if score not in ("ratio", "gain"):
+            raise ValueError("score must be 'ratio' or 'gain'")
         counts = Counter(split_basic(corpus, lowercase))
         words = {_initial_symbols(w): c for w, c in counts.items()}
         alphabet = sorted({s for seq in words for s in seq})
@@ -84,7 +90,7 @@ class WordPieceTokenizer(Tokenizer):
         engine = MergeEngine(words)
         step = 0
         while len(vocab) < vocab_size:
-            pair = engine.best_by_likelihood()
+            pair = engine.best_by_likelihood() if score == "ratio" else engine.best_by_gain()
             if pair is None:
                 break
             a, b = pair

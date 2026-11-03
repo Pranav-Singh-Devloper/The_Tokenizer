@@ -1,0 +1,301 @@
+{
+ "unbelievability": {
+  "word": [
+   "unbelievability"
+  ],
+  "char-BPE": [
+   "un",
+   "be",
+   "li",
+   "ev",
+   "ab",
+   "i",
+   "li",
+   "ty</w>"
+  ],
+  "byte-BPE": [
+   "Ġun",
+   "b",
+   "el",
+   "ie",
+   "v",
+   "ab",
+   "il",
+   "ity"
+  ],
+  "WordPiece": [
+   "unb",
+   "##e",
+   "##l",
+   "##i",
+   "##e",
+   "##v",
+   "##a",
+   "##b",
+   "##i",
+   "##l",
+   "##i",
+   "##t",
+   "##y"
+  ]
+ },
+ "tokenization": {
+  "word": [
+   "tokenization"
+  ],
+  "char-BPE": [
+   "to",
+   "k",
+   "en",
+   "i",
+   "z",
+   "ation</w>"
+  ],
+  "byte-BPE": [
+   "Ġto",
+   "ken",
+   "iz",
+   "ation"
+  ],
+  "WordPiece": [
+   "to",
+   "##k",
+   "##e",
+   "##n",
+   "##iz",
+   "##a",
+   "##t",
+   "##i",
+   "##o",
+   "##n"
+  ]
+ },
+ "Shakespearean": {
+  "word": [
+   "shakespearean"
+  ],
+  "char-BPE": [
+   "Sha",
+   "k",
+   "es",
+   "p",
+   "ea",
+   "rea",
+   "n</w>"
+  ],
+  "byte-BPE": [
+   "ĠS",
+   "ha",
+   "k",
+   "es",
+   "p",
+   "ea",
+   "re",
+   "an"
+  ],
+  "WordPiece": [
+   "sh",
+   "##a",
+   "##k",
+   "##e",
+   "##s",
+   "##p",
+   "##e",
+   "##a",
+   "##r",
+   "##e",
+   "##a",
+   "##n"
+  ]
+ },
+ "counterrevolutionary": {
+  "word": [
+   "counterrevolutionary"
+  ],
+  "char-BPE": [
+   "coun",
+   "ter",
+   "re",
+   "v",
+   "ol",
+   "u",
+   "ti",
+   "on",
+   "ary</w>"
+  ],
+  "byte-BPE": [
+   "Ġcoun",
+   "ter",
+   "re",
+   "v",
+   "ol",
+   "ution",
+   "ary"
+  ],
+  "WordPiece": [
+   "cou",
+   "##n",
+   "##t",
+   "##e",
+   "##r",
+   "##r",
+   "##e",
+   "##v",
+   "##o",
+   "##l",
+   "##u",
+   "##t",
+   "##i",
+   "##o",
+   "##n",
+   "##a",
+   "##r",
+   "##y"
+  ]
+ },
+ "overfitting": {
+  "word": [
+   "overfitting"
+  ],
+  "char-BPE": [
+   "o",
+   "ver",
+   "fi",
+   "tting</w>"
+  ],
+  "byte-BPE": [
+   "Ġover",
+   "f",
+   "itt",
+   "ing"
+  ],
+  "WordPiece": [
+   "o",
+   "##v",
+   "##e",
+   "##r",
+   "##f",
+   "##i",
+   "##t",
+   "##t",
+   "##ing"
+  ]
+ },
+ "antidisestablishmentarianism": {
+  "word": [
+   "antidisestablishmentarianism"
+  ],
+  "char-BPE": [
+   "an",
+   "ti",
+   "dis",
+   "es",
+   "ta",
+   "b",
+   "li",
+   "sh",
+   "m",
+   "ent",
+   "ar",
+   "i",
+   "an",
+   "is",
+   "m</w>"
+  ],
+  "byte-BPE": [
+   "Ġan",
+   "t",
+   "id",
+   "is",
+   "est",
+   "ab",
+   "l",
+   "ish",
+   "ment",
+   "ar",
+   "ian",
+   "is",
+   "m"
+  ],
+  "WordPiece": [
+   "a",
+   "##n",
+   "##t",
+   "##i",
+   "##d",
+   "##i",
+   "##s",
+   "##e",
+   "##stablish",
+   "##m",
+   "##e",
+   "##n",
+   "##t",
+   "##a",
+   "##r",
+   "##i",
+   "##a",
+   "##n",
+   "##i",
+   "##s",
+   "##m"
+  ]
+ },
+ "xyzzy": {
+  "word": [
+   "xyzzy"
+  ],
+  "char-BPE": [
+   "x",
+   "y",
+   "z",
+   "z",
+   "y</w>"
+  ],
+  "byte-BPE": [
+   "Ġ",
+   "x",
+   "y",
+   "z",
+   "z",
+   "y"
+  ],
+  "WordPiece": [
+   "x",
+   "##y",
+   "##zz",
+   "##y"
+  ]
+ },
+ "naïveté": {
+  "word": [
+   "naivete"
+  ],
+  "char-BPE": [
+   "na",
+   "ï",
+   "ve",
+   "t",
+   "é</w>"
+  ],
+  "byte-BPE": [
+   "Ġn",
+   "a",
+   "Ã",
+   "¯",
+   "ve",
+   "t",
+   "Ã",
+   "©"
+  ],
+  "WordPiece": [
+   "n",
+   "##a",
+   "##i",
+   "##v",
+   "##e",
+   "##t",
+   "##e"
+  ]
+ }
+}

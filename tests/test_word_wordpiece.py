@@ -1,3 +1,5 @@
+import pytest
+
 from tokenlab import WordPieceTokenizer, WordTokenizer
 
 CORPUS = "the cat sat on the mat . the dog sat on the log . playing played player plays play"
@@ -18,7 +20,8 @@ def test_word_min_freq():
 
 def test_word_lowercase_flag():
     assert WordTokenizer.train("The the", lowercase=True).tokenize("THE") == ["the"]
-    assert WordTokenizer.train("The the", lowercase=False).tokenize("THE") == ["THE"]
+    cased = WordTokenizer.train("The the", lowercase=False)
+    assert cased.tokenize("The the THE") == ["The", "the", "<unk>"]  # case matters now
 
 
 def test_wordpiece_greedy_longest_match():
@@ -48,3 +51,15 @@ def test_wordpiece_trainer_step_scores():
     steps = []
     WordPieceTokenizer.train(CORPUS, 45, on_merge=steps.append)
     assert steps and all(abs(s.score - s.count / (s.count_a * s.count_b)) < 1e-12 for s in steps)
+
+
+def test_word_tokenize_returns_unk_strings():
+    t = WordTokenizer.train(CORPUS, max_size=10)
+    assert t.tokenize("the zebra") == ["the", "<unk>"]
+
+
+def test_wordpiece_gain_variant_trains_and_is_lossless_on_seen_text():
+    t = WordPieceTokenizer.train(CORPUS, 60, score="gain")
+    assert t.decode(t.encode("the dog played")) == "the dog played"
+    with pytest.raises(ValueError):
+        WordPieceTokenizer.train(CORPUS, 60, score="nope")
