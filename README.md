@@ -6,7 +6,7 @@
 
 [![CI](https://github.com/Pranav-Singh-Devloper/The_Tokenizer/actions/workflows/ci.yml/badge.svg)](https://github.com/Pranav-Singh-Devloper/The_Tokenizer/actions)
 
-<!-- LIVE-DEMO -->
+### ▶ Live demo: **https://the-tokenizer.vercel.app**
 
 | | |
 |---|---|
