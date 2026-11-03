@@ -8,9 +8,9 @@
 
 ### ▶ Live demo: **https://the-tokenizer.vercel.app**
 
-[![Watch the 2-minute explainer video](web/assets/poster.jpg)](https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video/resolve/main/the-tokenizer.mp4)
+[![Watch the 2-minute explainer video](web/assets/poster.jpg)](https://huggingface.co/datasets/pranav-singh-developer-1/the-tokenizer-video/resolve/main/the-tokenizer.mp4)
 
-**[▶ Watch the 2-minute explainer](https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video/resolve/main/the-tokenizer.mp4)** · [video on Hugging Face Datasets](https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video) · [research report](docs/report.md)
+**[▶ Watch the 2-minute explainer](https://huggingface.co/datasets/pranav-singh-developer-1/the-tokenizer-video/resolve/main/the-tokenizer.mp4)** · [video on Hugging Face Datasets](https://huggingface.co/datasets/pranav-singh-developer-1/the-tokenizer-video) · [research report](docs/report.md)
 *(animated with Manim, composed with Remotion; source in [`video/`](video/))*
 
 | | |
@@ -19,7 +19,7 @@
 | ✅ **Verified** | 48 Python tests · 9 JS parity tests · **token-for-token identical to OpenAI's GPT-2 tokenizer** (338,025 tokens of Shakespeare) |
 | 🔬 **Research** | 5 experiments on held-out text: [`docs/report.md`](docs/report.md) |
 | 🎬 **Visualizer** | `web/`: no build step; runs the real algorithms in your browser |
-| 🎞️ **Video** | `video/`: Manim + Remotion explainer, hosted on [Hugging Face](https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video) |
+| 🎞️ **Video** | `video/`: Manim + Remotion explainer, hosted on [Hugging Face](https://huggingface.co/datasets/pranav-singh-developer-1/the-tokenizer-video) |
 
 ## Why this exists
 

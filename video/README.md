@@ -24,4 +24,4 @@ cd video/remotion && npm run studio   # live preview / edit the Remotion scenes
 cd video/animations && manim -pql scenes.py BPETraining   # iterate on one Manim scene
 ```
 
-The rendered video is not committed (see `.gitignore`). It is hosted on Hugging Face: <https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video> (direct file: <https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video/resolve/main/the-tokenizer.mp4>).
+The rendered video is not committed (see `.gitignore`). It is hosted on Hugging Face: <https://huggingface.co/datasets/pranav-singh-developer-1/the-tokenizer-video> (direct file: <https://huggingface.co/datasets/pranav-singh-developer-1/the-tokenizer-video/resolve/main/the-tokenizer.mp4>).
