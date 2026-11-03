@@ -1,0 +1,21 @@
+{
+ "duration": 20.167,
+ "captions": [
+  {
+   "t": 1.0,
+   "text": "A word-level tokenizer gives every known word its own id."
+  },
+  {
+   "t": 5.267,
+   "text": "…but a word it has never seen collapses into a single <unk> token."
+  },
+  {
+   "t": 8.733,
+   "text": "Even with EVERY training word in the vocabulary, 4.0% of held-out tokens are unknown."
+  },
+  {
+   "t": 12.933,
+   "text": "Sub-word tokenizers split rare words into reusable pieces instead."
+  }
+ ]
+}
