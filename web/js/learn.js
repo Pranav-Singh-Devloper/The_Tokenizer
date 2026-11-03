@@ -1,4 +1,5 @@
 import { h } from "./util.js";
+import { HF_DATASET, POSTER_URL, VIDEO_URL } from "./config.js";
 
 export function initLearn(el) {
   el.append(
@@ -9,6 +10,14 @@ export function initLearn(el) {
       h("div.row", {},
         h("a", { href: "#train", class: "btn primary cta" }, "▶ Watch BPE train, step by step"),
         h("a", { href: "#playground", class: "btn cta" }, "Compare tokenizers on your own text"))),
+
+    h("div.card", {},
+      h("h2", {}, "Watch: the 2-minute explainer"),
+      h("video", { class: "explainer", controls: true, preload: "metadata", poster: POSTER_URL, playsinline: true, src: VIDEO_URL },
+        "Your browser cannot play this video. ", h("a", { href: VIDEO_URL }, "Open it directly.")),
+      h("p.small.muted", { style: { marginTop: "8px" } },
+        "Animated with Manim and composed with Remotion; every number comes from the project's code. Hosted on ",
+        h("a", { href: HF_DATASET, target: "_blank", rel: "noopener" }, "Hugging Face Datasets"), ".")),
 
     h("div.card", {},
       h("h2", {}, "The pipeline"),

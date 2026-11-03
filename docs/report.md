@@ -1,6 +1,6 @@
 # Tokenizers from Scratch: Word-Level, BPE, Byte-Level BPE and WordPiece
 
-**Pranav Singh** · Project report · 2026
+**Pranav Singh** · Project report · 2026 · [▶ 2-minute explainer video](https://huggingface.co/datasets/pranav-singh-developer/the-tokenizer-video/resolve/main/the-tokenizer.mp4) · [live demo](https://the-tokenizer.vercel.app)
 
 > **Abstract.** A language model never sees text, only integers, and the function that maps one to
 > the other, the *tokenizer*, silently fixes sequence length, vocabulary size, robustness to rare

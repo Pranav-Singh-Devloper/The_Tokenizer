@@ -178,3 +178,5 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .lab-controls { display: grid; gap: 12px; }
 .sep { width: 1px; align-self: stretch; background: var(--line); }
 .done-note { color: var(--win); font-weight: 600; }
+
+video.explainer { width: 100%; max-width: 960px; aspect-ratio: 16 / 9; display: block; border-radius: 10px; background: #000; border: 1px solid var(--line); }
