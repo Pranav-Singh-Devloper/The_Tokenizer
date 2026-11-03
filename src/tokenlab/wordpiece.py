@@ -99,6 +99,13 @@ class WordPieceTokenizer(Tokenizer):
                 on_merge(WPStep(step, pair, new_symbol, count, ca, cb, count / (ca * cb), len(vocab)))
         return cls(vocab, lowercase)
 
+    def truncated(self, vocab_size: int) -> "WordPieceTokenizer":
+        """Vocabulary after fewer merges (ids are assigned in merge order, so
+        keeping ``id < vocab_size`` is exactly an earlier stopping point)."""
+        return WordPieceTokenizer(
+            {t: i for t, i in self.vocab.items() if i < vocab_size}, self.lowercase
+        )
+
     # ---- inference ----------------------------------------------------
     def tokenize_word(self, word: str) -> list[str]:
         """Greedy longest-match-first (a.k.a. MaxMatch) on one word."""
