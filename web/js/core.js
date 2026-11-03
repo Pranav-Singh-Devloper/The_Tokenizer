@@ -54,6 +54,10 @@ export const textToSymbols = (text) => {
   const m = bytesToUnicode();
   return Array.from(new TextEncoder().encode(text), (b) => m.get(b));
 };
+export const symbolsToBytes = (s) => {
+  bytesToUnicode();
+  return Uint8Array.from(Array.from(s), (c) => _u2b.get(c) ?? 63);
+};
 export const symbolsToText = (s) => {
   bytesToUnicode();
   return new TextDecoder().decode(Uint8Array.from(Array.from(s), (c) => _u2b.get(c)));
@@ -65,6 +69,7 @@ export const CLASSIC_SPECIALS = ["<pad>", "<unk>", "<bos>", "<eos>"];
 export const BYTE_SPECIALS = ["<|endoftext|>"];
 export const WP_SPECIALS = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "[MASK]"];
 const INF = Number.MAX_SAFE_INTEGER;
+const TOPK = 14;  // rows of the pair table the visualizer can show
 const pairKey = (a, b) => a + "\u0001" + b;
 
 function initialSymbols(token, mode) {
@@ -106,10 +111,14 @@ export class Trainer {
     this.vocab = new Map();
     for (const t of [...this.specials, ...base]) if (!this.vocab.has(t)) this.vocab.set(t, this.vocab.size);
     this.baseSize = this.vocab.size;
+    this.initialLen = this.corpusLen();
     this.merges = [];       // [[a, b], ...]
     this.history = [];      // one record per committed merge
     this.pending = null;
   }
+
+  /** Corpus length in symbols (word frequency x symbols per word). */
+  corpusLen() { return this.words.reduce((n, w) => n + w.freq * w.symbols.length, 0); }
 
   /** Phase 1+2: count pairs, score them, choose the winner. */
   analyze() {
@@ -137,14 +146,20 @@ export class Trainer {
       } else if (x.count !== y.count) return x.count > y.count;
       return cmpPair(x.pair, y.pair) < 0;
     };
-    let best = rows[0];
-    for (const r of rows) if (better(r, best)) best = r;
-    rows.sort((x, y) => (x === y ? 0 : better(x, y) ? -1 : 1));
+    // keep only the TOPK best rows (insertion into a tiny sorted array); `better`
+    // is a strict total order, so top[0] is exactly the global winner.
+    const top = [];
+    for (const r of rows) {
+      let i = top.length;
+      while (i > 0 && better(r, top[i - 1])) i--;
+      if (i < TOPK) { top.splice(i, 0, r); if (top.length > TOPK) top.pop(); }
+    }
+    const best = top[0];
     const [a, b] = best.pair;
     const affected = this.words.filter((w) => w.symbols.some((s, i) => s === a && w.symbols[i + 1] === b));
     this.pending = {
       step: this.merges.length + 1,
-      ranking: rows, best, newSymbol: mergedSymbol(a, b),
+      ranking: top, best, newSymbol: mergedSymbol(a, b),
       totalPairs: rows.length, affected: affected.map((w) => w.text),
     };
     return this.pending;
@@ -167,7 +182,7 @@ export class Trainer {
     this.merges.push([a, b]);
     const isNew = !this.vocab.has(p.newSymbol);
     if (isNew) this.vocab.set(p.newSymbol, this.vocab.size);
-    const rec = { ...p, isNew, vocabSize: this.vocab.size };
+    const rec = { ...p, isNew, vocabSize: this.vocab.size, corpusLen: this.corpusLen() };
     this.history.push(rec);
     this.pending = null;
     return rec;
