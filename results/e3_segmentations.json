@@ -1,7 +1,7 @@
 {
  "unbelievability": {
   "word": [
-   "unbelievability"
+   "<unk>"
   ],
   "char-BPE": [
    "un",
@@ -37,11 +37,21 @@
    "##i",
    "##t",
    "##y"
+  ],
+  "WordPiece-gain": [
+   "un",
+   "##b",
+   "##el",
+   "##ie",
+   "##v",
+   "##ab",
+   "##il",
+   "##ity"
   ]
  },
  "tokenization": {
   "word": [
-   "tokenization"
+   "<unk>"
   ],
   "char-BPE": [
    "to",
@@ -68,11 +78,18 @@
    "##i",
    "##o",
    "##n"
+  ],
+  "WordPiece-gain": [
+   "to",
+   "##ke",
+   "##n",
+   "##iz",
+   "##ation"
   ]
  },
  "Shakespearean": {
   "word": [
-   "shakespearean"
+   "<unk>"
   ],
   "char-BPE": [
    "Sha",
@@ -106,11 +123,19 @@
    "##e",
    "##a",
    "##n"
+  ],
+  "WordPiece-gain": [
+   "sh",
+   "##ake",
+   "##s",
+   "##pe",
+   "##are",
+   "##an"
   ]
  },
  "counterrevolutionary": {
   "word": [
-   "counterrevolutionary"
+   "<unk>"
   ],
   "char-BPE": [
    "coun",
@@ -151,11 +176,18 @@
    "##a",
    "##r",
    "##y"
+  ],
+  "WordPiece-gain": [
+   "counter",
+   "##re",
+   "##vol",
+   "##ution",
+   "##ary"
   ]
  },
  "overfitting": {
   "word": [
-   "overfitting"
+   "<unk>"
   ],
   "char-BPE": [
    "o",
@@ -179,11 +211,17 @@
    "##t",
    "##t",
    "##ing"
+  ],
+  "WordPiece-gain": [
+   "over",
+   "##f",
+   "##it",
+   "##ting"
   ]
  },
  "antidisestablishmentarianism": {
   "word": [
-   "antidisestablishmentarianism"
+   "<unk>"
   ],
   "char-BPE": [
    "an",
@@ -239,11 +277,24 @@
    "##i",
    "##s",
    "##m"
+  ],
+  "WordPiece-gain": [
+   "ant",
+   "##id",
+   "##ise",
+   "##st",
+   "##ab",
+   "##lish",
+   "##ment",
+   "##ar",
+   "##ian",
+   "##is",
+   "##m"
   ]
  },
  "xyzzy": {
   "word": [
-   "xyzzy"
+   "<unk>"
   ],
   "char-BPE": [
    "x",
@@ -265,11 +316,18 @@
    "##y",
    "##zz",
    "##y"
+  ],
+  "WordPiece-gain": [
+   "x",
+   "##y",
+   "##z",
+   "##z",
+   "##y"
   ]
  },
  "naïveté": {
   "word": [
-   "naivete"
+   "<unk>"
   ],
   "char-BPE": [
    "na",
@@ -294,6 +352,13 @@
    "##i",
    "##v",
    "##e",
+   "##t",
+   "##e"
+  ],
+  "WordPiece-gain": [
+   "n",
+   "##a",
+   "##ive",
    "##t",
    "##e"
   ]

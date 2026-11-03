@@ -86,8 +86,11 @@ def main() -> None:
     (bpe_cls, t2) = timed(BPETokenizer.train, train, max_v, False)
     (wp, t3) = timed(WordPieceTokenizer.train, train, max_v)
     (wordtok, t4) = timed(WordTokenizer.train, train, max_v)
-    print(f"  train time  byte-BPE {t1:.1f}s  char-BPE {t2:.1f}s  WordPiece {t3:.1f}s  word {t4:.2f}s")
-    summary["train_seconds_at_max_vocab"] = {"byte_bpe": t1, "char_bpe": t2, "wordpiece": t3, "word": t4}
+    (wpg, t5) = timed(WordPieceTokenizer.train, train, max_v, score="gain")
+    print(f"  train time  byte-BPE {t1:.1f}s  char-BPE {t2:.1f}s  WordPiece {t3:.1f}s  "
+          f"WordPiece-gain {t5:.1f}s  word {t4:.2f}s")
+    summary["train_seconds_at_max_vocab"] = {"byte_bpe": t1, "char_bpe": t2, "wordpiece": t3,
+                                             "wordpiece_gain": t5, "word": t4}
 
     def word_at(v):  # word vocab nested by frequency rank as well
         return WordTokenizer(
@@ -99,6 +102,7 @@ def main() -> None:
         "char-BPE": bpe_cls.truncated,
         "byte-BPE": bpe_byte.truncated,
         "WordPiece": wp.truncated,
+        "WordPiece-gain": wpg.truncated,
     }
     rows = []
     for name, make in families.items():
@@ -115,7 +119,8 @@ def main() -> None:
     print(f"E2 head-to-head at V={FIXED}")
     e2 = []
     for name, make, secs in [("word", word_at, t4), ("char-BPE", bpe_cls.truncated, None),
-                             ("byte-BPE", bpe_byte.truncated, None), ("WordPiece", wp.truncated, None)]:
+                             ("byte-BPE", bpe_byte.truncated, None), ("WordPiece", wp.truncated, None),
+                             ("WordPiece-gain", wpg.truncated, None)]:
         tok = make(FIXED)
         # honest training time for THIS vocab size
         if name == "char-BPE":
@@ -124,6 +129,8 @@ def main() -> None:
             _, secs = timed(BPETokenizer.train, train, FIXED, True)
         elif name == "WordPiece":
             _, secs = timed(WordPieceTokenizer.train, train, FIXED)
+        elif name == "WordPiece-gain":
+            _, secs = timed(WordPieceTokenizer.train, train, FIXED, score="gain")
         r = evaluate(tok, test).as_dict()
         e2.append({"tokenizer": name, "train_seconds": round(secs, 2), **r})
     write_csv(OUT / "e2_comparison.csv", e2)
@@ -131,7 +138,8 @@ def main() -> None:
 
     # ---------------- E3: segmentation of unseen words ---------------------
     models = {"word": word_at(FIXED), "char-BPE": bpe_cls.truncated(FIXED),
-              "byte-BPE": bpe_byte.truncated(FIXED), "WordPiece": wp.truncated(FIXED)}
+              "byte-BPE": bpe_byte.truncated(FIXED), "WordPiece": wp.truncated(FIXED),
+              "WordPiece-gain": wpg.truncated(FIXED)}
     e3 = {w: {n: m.tokenize(" " + w if n == "byte-BPE" else w) for n, m in models.items()}
           for w in UNSEEN_WORDS}
     (OUT / "e3_segmentations.json").write_text(json.dumps(e3, ensure_ascii=False, indent=1))
@@ -145,7 +153,7 @@ def main() -> None:
     if (RAW / "gpt2_encoder.json").exists():
         ref = load_gpt2(RAW / "gpt2_encoder.json", RAW / "gpt2_vocab.bpe")
     for dom, text in probes.items():
-        for name in ("word", "char-BPE", "byte-BPE", "WordPiece"):
+        for name in models:
             r = evaluate(models[name], text)
             e4.append({"domain": dom, "tokenizer": f"{name} (V={FIXED}, Shakespeare-trained)",
                        "bytes_per_token": round(r.bytes_per_token, 3), "unk_rate": round(r.unk_rate, 4)})
@@ -177,7 +185,8 @@ def make_figures(s: dict) -> None:
     except ImportError:
         print("matplotlib missing: skipping figures")
         return
-    colors = {"word": "#d95f02", "char-BPE": "#1b9e77", "byte-BPE": "#7570b3", "WordPiece": "#e7298a"}
+    colors = {"word": "#d95f02", "char-BPE": "#1b9e77", "byte-BPE": "#7570b3", "WordPiece": "#e7298a",
+              "WordPiece-gain": "#66a61e"}
     rows = s["e1"]
 
     def series(name, key):
