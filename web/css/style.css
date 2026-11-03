@@ -68,13 +68,13 @@ select, input[type=number], textarea, input[type=text] {
 }
 textarea { width: 100%; resize: vertical; font-family: var(--mono); font-size: .88rem; min-height: 90px; }
 input[type=range] { accent-color: var(--accent); }
-button.btn {
+.btn {
   background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 8px;
   padding: 8px 14px; font: inherit; font-weight: 600; font-size: .92rem; cursor: pointer;
 }
-button.btn:hover:not(:disabled) { border-color: var(--accent); }
-button.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-button.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: .78rem; font-weight: 600; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
 .pill.ok { background: color-mix(in srgb, var(--win) 16%, transparent); color: var(--win); }
@@ -180,3 +180,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .done-note { color: var(--win); font-weight: 600; }
 
 video.explainer { width: 100%; max-width: 960px; aspect-ratio: 16 / 9; display: block; border-radius: 10px; background: #000; border: 1px solid var(--line); }
+
+a.btn { text-decoration: none; display: inline-block; }
+.tab { scroll-margin-top: 72px; }
